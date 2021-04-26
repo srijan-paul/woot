@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" href="style.css" crossorigin="anonymous"
-    rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
-      integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
-      crossorigin="anonymous"
-    />
-    <title>MongoDB app</title>
-  </head>
-  <body>
-    <div class="container">
-      <textarea rows="10" cols="50" id="tweet-content"></textarea>
-      <br />
-      <button class="button-primary" id="make-tweet">Tweet!</button>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link type="text/css" href="style.css" crossorigin="anonymous" rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+			integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+			crossorigin="anonymous"
+		/>
+		<title>MongoDB app</title>
+	</head>
+	<body>
+		<div class="container">
+			<textarea rows="10" cols="50" id="tweet-content"></textarea>
+			<br />
+			<button class="button-primary" id="make-tweet">Tweet!</button>
 
-      <div class="tweets">
-        <% tweets.forEach(tweet=> { %>
-        <div class="tweet"><%= tweet.content %></div>
-        <% }) %>
-      </div>
+			<div class="tweets">
+				<% posts.forEach(post => { %>
+				<div class="tweet"><%= post.content %></div>
+				<% }) %>
+			</div>
 
-      <script type="text/javascript">
-        const btn = document.querySelector("#make-tweet");
-        const tweetContents = document.querySelector("#tweet-content");
+			<script type="text/javascript">
+				const btn = document.querySelector('#make-tweet');
+				const tweetContents = document.querySelector('#tweet-content');
 
-        btn.addEventListener("click", (e) => {
-          if (tweetContents.value == "") return;
-          fetch("/tweet", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ content: tweetContents.value }),
-          });
-        });
-      </script>
-    </div>
-  </body>
+				btn.addEventListener('click', e => {
+					if (tweetContents.value == '') return;
+					fetch('/post', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({ content: tweetContents.value, author: 'xxx', parent: null }),
+					});
+				});
+			</script>
+		</div>
+	</body>
 </html>
