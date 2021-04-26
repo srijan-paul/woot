@@ -1,0 +1,15 @@
+:root {
+  --fgColor: #07020d;
+  --bgAccent: #b9e5ff;
+}
+
+.tweet {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: var(--bgAccent);
+  color: var(--fgColor);
+}
+
+.tweets {
+  column-count: 3;
+}
