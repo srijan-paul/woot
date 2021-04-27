@@ -30,6 +30,11 @@ app.get('/', async (req, res) => {
 	res.render('index.ejs', { posts });
 });
 
+app.get('/login', async (req, res) => {
+	const posts = await Post.find({});
+	res.render('login.ejs', { posts });
+});
+
 app.post('/post', (req, res) => {
 	const postData = req.body;
 	const post = new Post(req.body);
