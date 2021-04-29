@@ -5,6 +5,22 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="style.css" />
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+			integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+			crossorigin="anonymous"
+		></script>
+		<style>
+			input:focus {
+				outline: none;
+			}
+
+			.warn {
+				display: none;
+				color: #ff7675;
+				margin-top: 2%;
+			}
+		</style>
 		<title>Login - Woot</title>
 	</head>
 	<body>
@@ -13,21 +29,41 @@
 				<span id="header-text">Log in to</span> <span class="header-woot">Woot</span>.
 			</div>
 			<form action="POST" class="LogInForm" id="login-form">
-				<input type="text" name="username" id="username" placeholder="User handle" />
-				<input type="password" name="password" id="password" placeholder="Password" />
-				<button type="submit">Sign in</button>
+				<div class="input-group">
+					<input type="text" name="username" id="username" placeholder="User handle" />
+				</div>
+
+				<div class="input-group">
+					<input type="password" name="password" id="password" placeholder="Password" />
+					<div class="warn">Invalid credentials.</div>
+				</div>
+
+				<button id="signin-btn">Sign in</button>
 			</form>
 
-			<form action="POST" style="display: none" class="LogInForm" id="signup-form">
-				<input type="text" name="username" id="username" placeholder="User Handle" />
-				<input type="password" name="password" id="password" placeholder="Password" />
-				<input
-					type="password"
-					name="confirm-password"
-					id="confirm-password"
-					placeholder="Confirm password"
-				/>
-				<button type="submit">Sign up</button>
+			<form style="display: none" class="LogInForm" id="signup-form">
+				<div class="input-group">
+					<input type="text" name="username" id="username" placeholder="User Handle" />
+					<div class="warn" id="handle-error">
+						Handle must be 3-20 alphanumeric or '_' characters.
+					</div>
+				</div>
+
+				<div class="input-group">
+					<input type="password" name="password" id="password" placeholder="Password" />
+					<div class="warn" id="password-error">Password must be atleast 8 characters.</div>
+				</div>
+
+				<div class="input-group">
+					<input
+						type="password"
+						name="confirm_password"
+						id="confirm-password"
+						placeholder="Confirm password"
+					/>
+					<div class="warn" id="confirm-error">Passwords do not match.</div>
+				</div>
+				<button id="signup-btn">Sign up</button>
 			</form>
 
 			<span class="login-btm-text">

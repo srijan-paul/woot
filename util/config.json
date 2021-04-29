@@ -1,0 +1,7 @@
+{
+	"minUserNameLen": 3,
+	"maxUserNameLen": 18,
+	"minPasswordLen": 8,
+	"maxPasswordLen": 20,
+	"saltRounds": 3
+}

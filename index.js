@@ -1,8 +1,7 @@
 require('dotenv').config();
 
 const mongoose = require('mongoose');
-const UserModel = require('./api/models/user');
-const Post = require('./api/models/post');
+const Post = require('./models/post');
 
 const express = require('express');
 const app = express();
@@ -13,17 +12,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: '100kb' }));
 
 const uri = `mongodb+srv://srijanpaul:${process.env.MDB_PASSWORD}@cluster0.5m7qf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-const homePageTweetCount = 10;
 
 mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true });
 
 const db = mongoose.connection;
-
 db.on('error', console.error);
-
 db.on('open', () => {
 	console.log('Connected to MongoDB atlas database.');
 });
+
+app.use('/api', require('./routes/api'));
 
 app.get('/', async (req, res) => {
 	const posts = await Post.find({});
@@ -35,14 +33,16 @@ app.get('/login', async (req, res) => {
 	res.render('login.ejs', { posts });
 });
 
-app.post('/post', (req, res) => {
-	const postData = req.body;
-	const post = new Post(req.body);
-	console.log(postData, post)
-	post.save((err, post) => {
-		if (err) console.error(err);
-	});
-	res.redirect('/');
+app.post('/post', async (req, res) => {
+	try {
+		const post = new Post(req.body);
+		await post.save();
+		res.redirect('/');
+	} catch (err) {
+		console.error(err);
+		res.status(500);
+		res.end();
+	}
 });
 
 const port = process.env.PORT || 3000;

@@ -69,7 +69,7 @@ body {
 
 .LogInForm {
 	/* width: 30%; */
-	padding: 4%;
+	padding: 1%;
 	display: flex;
 	flex-direction: column;
 	/* align-items: center; */
@@ -78,11 +78,18 @@ body {
 	border-radius: 25px;
 }
 
-.LogInForm > input {
-	padding: 2%;
+.input-group {
+	min-width: 100%;
+	text-align: left;
+	margin-bottom: 6%;
+}
+
+.input-group > input {
+	padding: 3%;
+	width: 90%;
+	margin: auto;
 	font-size: 20px;
 	display: block;
-	margin-bottom: 6%;
 	border-radius: 10px;
 	background-color: var(--clr-secondary-300);
 	color: var(--clr-primary-300);
@@ -90,7 +97,7 @@ body {
 	transition-duration: 200ms;
 }
 
-.LogInForm > input:focus {
+.input-group > input:focus {
 	outline: none;
 	border-style: solid;
 	border-color: var(--clr-accent-500);
@@ -107,7 +114,7 @@ body {
 	margin-top: 3%;
 	background-color: var(--clr-accent-500);
 	border-color: var(--clr-secondary-300);
-	color: var(--clr-secondary-300);
+	color: var(--clr-primary);
 	font-weight: bolder;
 	text-transform: uppercase;
 }
@@ -154,18 +161,28 @@ a:visited {
 	}
 
 	.login-wrapper {
-		width: 70%;
+		width: 60%;
+		margin-top: 10%;
 	}
 }
 
 @media screen and (max-width: 600px) {
 	.content {
-		width: 90%;
+		width: 80%;
 		margin: auto;
 	}
 
 	.login-wrapper {
+		width: 80%;
 		margin-top: 30%;
-		width: 100%;
+	}
+
+	.LoginForm {
+		padding: 1%;
+		border-radius: 1px;
+	}
+
+	.LogInForm > button {
+		font-size: 120%;
 	}
 }
