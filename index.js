@@ -33,6 +33,10 @@ app.get('/login', async (req, res) => {
 	res.render('login.ejs', { posts });
 });
 
+app.get('/u/:userhandle', async (req, res) => {
+	res.render('user.ejs', { user: { handle: 'DJSWAIN' } });
+});
+
 app.post('/post', async (req, res) => {
 	try {
 		const post = new Post(req.body);
