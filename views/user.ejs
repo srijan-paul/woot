@@ -4,9 +4,77 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title><%= user.handle %></title>
+		<link rel="stylesheet" href="../style.css" />
+		<link rel="stylesheet" href="../user.css" />
+		<title><%= user.handle %> - Woot</title>
 	</head>
 	<body>
-		<%= user.handle %>
+		<div class="navbar">
+			<div class="woot-logo">Woot</div>
+			<div class="nav-list">
+				<span>Home Feed</span>
+				<span>Profile</span>
+			</div>
+		</div>
+		<div class="content">
+			<div class="main">
+				<div class="user-dashboard">
+					<div class="user-avatar">
+						<svg
+							xmlns:dc="http://purl.org/dc/elements/1.1/"
+							xmlns:cc="http://creativecommons.org/ns#"
+							xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+							xmlns:svg="http://www.w3.org/2000/svg"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+						>
+							<defs>
+								<clipPath id="clip-a-1428764982">
+									<rect width="13" height="24" x="0" y="0" />
+								</clipPath>
+								<clipPath id="clip-b-1428764982">
+									<rect width="12" height="24" x="12" y="0" />
+								</clipPath>
+							</defs>
+							<rect fill="transparent" width="24" height="24" x="0" y="0" />
+							<g style="fill: #fdd835" clip-path="url(#clip-a-1428764982)">
+								<path
+									d="M 21.999999,17.773502 12,23.547005 2.0000006,17.773502 l 0,-11.5470044 L 12,0.4529953 21.999999,6.2264977 Z"
+								/>
+							</g>
+							<g style="fill: #fbc02d" clip-path="url(#clip-b-1428764982)">
+								<path
+									d="M 21.999999,17.773502 12,23.547005 2.0000006,17.773502 l 0,-11.5470044 L 12,0.4529953 21.999999,6.2264977 Z"
+								/>
+							</g>
+							<g style="fill: #ba68c8" clip-path="url(#clip-a-1428764982)">
+								<rect width="14" height="3" x="5" y="8" rx="1" ry="1" />
+							</g>
+							<g style="fill: #ab47bc" clip-path="url(#clip-b-1428764982)">
+								<rect width="14" height="3" x="5" y="8" rx="1" ry="1" />
+							</g>
+							<g style="fill: #ba68c8" clip-path="url(#clip-a-1428764982)">
+								<path
+									d="m 8,14 c -0.554,0 -1,0.446 -1,1 v 2 c 0,0.554 1.446,2 2,2 h 6 c 0.554,0 2,-1.446 2,-2 v -2 c 0,-0.554 -0.446,-1 -1,-1 z m 1,1 h 2 v 2 c 0,0.554 -0.446,1 -1,1 -0.554,0 -1,-0.446 -1,-1 z m 4,0 h 2 v 2 c 0,0.554 -0.446,1 -1,1 -0.554,0 -1,-0.446 -1,-1 z"
+								/>
+							</g>
+							<g style="fill: #ab47bc" clip-path="url(#clip-b-1428764982)">
+								<path
+									d="m 8,14 c -0.554,0 -1,0.446 -1,1 v 2 c 0,0.554 1.446,2 2,2 h 6 c 0.554,0 2,-1.446 2,-2 v -2 c 0,-0.554 -0.446,-1 -1,-1 z m 1,1 h 2 v 2 c 0,0.554 -0.446,1 -1,1 -0.554,0 -1,-0.446 -1,-1 z m 4,0 h 2 v 2 c 0,0.554 -0.446,1 -1,1 -0.554,0 -1,-0.446 -1,-1 z"
+								/>
+							</g>
+						</svg>
+					</div>
+					<div class="user-info">
+						<div class="user-name"><%= user.handle %></div>
+						<div class="user-bio">Hello I am DJSwaiiiiiiiiinnnnnn !!!! DJ DJ DJ DJ Swaaaaiiiin</div>
+					</div>
+				</div>
+
+				<div class="post-list">
+
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

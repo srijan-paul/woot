@@ -1,0 +1,51 @@
+.main {
+	background-color: var(--clr-secondary-400);
+	border-radius: 25px;
+	padding: 3%;
+	width: 70%;
+	margin: auto;
+	font-size: 18px;
+}
+
+.user-dashboard {
+	display: flex;
+	flex-direction: row;
+	gap: 3%;
+}
+
+.user-name {
+	font-family: 'Passion One';
+	font-size: 34px;
+	margin-bottom: 3%;
+}
+
+.user-avatar {
+	width: 82px;
+	height: 82px;
+}
+
+.user-avatar > svg {
+	border-radius: 50%;
+	padding: 2%;
+	border: 3px solid var(--clr-accent-400);
+}
+
+@media only screen and (max-width: 800px) {
+	.main {
+		width: 100%;
+		padding: 1%;
+	}
+
+	.user-dashboard {
+		flex-direction: column;
+		align-items: center;
+		padding: 4%;
+		background-color: var(--clr-secondary-400);
+		border-radius: 4%;
+	}
+
+	.user-info {
+		font-size: 16px;
+		text-align: center;
+	}
+}

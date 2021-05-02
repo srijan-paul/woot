@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const Post = require('./models/post');
 
 const express = require('express');
+const { getUserByHandle } = require('./util/db');
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -33,8 +34,19 @@ app.get('/login', async (req, res) => {
 	res.render('login.ejs', { posts });
 });
 
-app.get('/u/:userhandle', async (req, res) => {
-	res.render('user.ejs', { user: { handle: 'DJSWAIN' } });
+app.get('/u/:handle', async (req, res) => {
+	try {
+		const user = await getUserByHandle(req.params.handle);
+		if (!user) {
+			res.status(404);
+			res.render('404.ejs');
+			return;
+		}
+		res.render('user.ejs', { user: user.getPublicData() });
+	} catch (err) {
+		res.status(404);
+		res.end();
+	}
 });
 
 app.post('/post', async (req, res) => {
@@ -43,7 +55,6 @@ app.post('/post', async (req, res) => {
 		await post.save();
 		res.redirect('/');
 	} catch (err) {
-		console.error(err);
 		res.status(500);
 		res.end();
 	}
