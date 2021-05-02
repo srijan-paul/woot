@@ -66,6 +66,7 @@ const isValidNameChar = k => isAlpha(k) || isNum(k) || k == '_';
 const handleWarn = id('handle-error');
 const passwordWarn = id('password-error');
 const confirmPasswordWarn = id('confirm-error');
+const loginError = id('login-error');
 
 function assertWarning(cond, warnElement) {
 	if (!cond) {
@@ -111,4 +112,20 @@ onClick(signUpBtn, e => {
 			.then(res => {})
 			.catch(console.log);
 	}
+});
+
+onClick(logInBtn, e => {
+	e.preventDefault();
+	const { username, password } = getFormData(logInForm);
+	axios
+		.post('api/login', { username, password })
+		.then(res => {
+			if (res.status == 200) {
+				const handle = res.data.userData.handle;
+				window.location.href = '/u/' + handle;
+			}
+		})
+		.catch(_ => {
+			loginError.style.display = 'block';
+		});
 });

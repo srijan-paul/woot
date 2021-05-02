@@ -72,15 +72,16 @@ router.post('/login', async (req, res) => {
 		/// packaged back to the client in the response, so no
 		/// real errors are being thrown to the js runtime.
 		if (!user) throw Error('No such user');
-		if (!user.checkPassword(password)) throw Error('Incorrect password.');
+		if (!(await user.checkPassword(password))) throw new Error('Incorrect password.');
+
 		const token = jwt.sign({ handle: username }, process.env.JWT_SECRET, { expiresIn: '7 days' });
 		res.json({
 			userData: user.getPublicData(),
 			token: token,
 		});
 	} catch (err) {
-		console.error(err);
-		res.json(403);
+		res.status(403);
+		res.end();
 	}
 });
 
