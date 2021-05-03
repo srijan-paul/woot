@@ -67,13 +67,19 @@
 					</div>
 					<div class="user-info">
 						<div class="user-name"><%= user.handle %></div>
-						<div class="user-bio">Hello I am DJSwaiiiiiiiiinnnnnn !!!! DJ DJ DJ DJ Swaaaaiiiin</div>
+						<% if (user.bio) { %>
+						<div class="user-bio"><%= user.bio %></div>
+						<% } else { %>
+						<div class="user-bio inactive">(No bio).</div>
+						<% } %>
+						<div class="user-stats">
+							<span><%= user.followers.length %> followers </span>
+							<span><%= user.postCount %> posts </span>
+						</div>
 					</div>
 				</div>
 
-				<div class="post-list">
-
-				</div>
+				<div class="post-list"></div>
 			</div>
 		</div>
 	</body>

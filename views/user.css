@@ -13,10 +13,18 @@
 	gap: 3%;
 }
 
+.user-info {
+	width: 100%;
+}
+
+.user-info > .inactive {
+	color: var(--clr-primary-400);
+}
+
 .user-name {
 	font-family: 'Passion One';
 	font-size: 34px;
-	margin-bottom: 3%;
+	margin-bottom: 1%;
 }
 
 .user-avatar {
@@ -28,6 +36,25 @@
 	border-radius: 50%;
 	padding: 2%;
 	border: 3px solid var(--clr-accent-400);
+}
+
+.user-stats {
+	margin-top: 2%;
+	width: 100%;
+}
+
+.user-stats > span {
+	/* text-decoration: underline; */
+	color: var(--clr-accent-400);
+}
+
+.user-stats > span:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.user-stats > span:last-child {
+	margin-left: 2%;
 }
 
 @media only screen and (max-width: 800px) {

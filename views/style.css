@@ -3,6 +3,7 @@
 :root {
 	--clr-primary: #fff;
 	--clr-primary-300: rgba(255, 255, 255, 0.8);
+	--clr-primary-400: rgba(255, 255, 255, 0.4);
 	--clr-accent-300: hsl(203, 100%, 80%);
 	--clr-accent-400: hsl(203, 100%, 65%);
 	--clr-accent-500: hsl(203, 100%, 50%);
@@ -57,11 +58,13 @@ body {
 
 .nav-list {
 	margin: auto;
+	padding-right: 10%;
 }
 
 .nav-list > span {
 	color: var(--clr-primary-300);
-	margin: 0 20px;
+	margin: 0px 20px;
+	height: fit-content;
 }
 
 .nav-list > span:hover {
