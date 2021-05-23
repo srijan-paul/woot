@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require('../../models/user');
+const Post = require('../../models/post');
 const jwt = require('jsonwebtoken');
 const { isUsernameValid, hash, isPasswordValid } = require('../../util');
 
@@ -32,6 +33,7 @@ router.get('/u/:handle', async (req, res) => {
 /// and the userhandle of the user that was just created.
 router.post('/u', async (req, res) => {
 	const { username, password } = req.body;
+	console.log(req.body);
 
 	if (isUsernameValid(username) && isPasswordValid(password)) {
 		try {
@@ -44,8 +46,7 @@ router.post('/u', async (req, res) => {
 			});
 
 			if (userExists) {
-				res.status(409);
-				res.end();
+				res.status(409).end();
 				return;
 			}
 
@@ -54,12 +55,10 @@ router.post('/u', async (req, res) => {
 			res.send({ status: 'ok', handle: user.handle });
 		} catch (err) {
 			console.error(err);
-			res.status(500);
-			res.send({ status: 'failure' });
+			res.status(500).send({ status: 'failure' });
 		}
 	} else {
-		res.status(400);
-		res.send({ status: 'bad-credentials' });
+		res.status(400).send({ status: 'bad-credentials' });
 	}
 });
 
@@ -82,6 +81,33 @@ router.post('/login', async (req, res) => {
 	} catch (err) {
 		res.status(403);
 		res.end();
+	}
+});
+
+router.post('/post', async (req, res) => {
+	try {
+		const { content, author, parent } = req.body;
+
+		if (Post.isContentValid(content)) {
+			res.status(403).send({ error: 'Post content too short' });
+			return;
+		}
+
+		const post = new Post({ content, author, parent });
+		const postRef = await post.save();
+		res.json({ id: postRef._id });
+	} catch (e) {
+		res.status(500).end();
+	}
+});
+
+router.get('/post/:id', async (req, res) => {
+	try {
+		const { id } = req.params;
+		const post = await Post.findOne({ _id: id });
+		res.json({ content: post.content, author: post.author, parent: post.parent });
+	} catch (e) {
+		res.status(404).end();
 	}
 });
 
