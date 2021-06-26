@@ -13,8 +13,7 @@ router.get('/u/:handle', async (req, res) => {
 	const { handle } = req.params;
 
 	if (!handle) {
-		res.status(404);
-		res.end();
+		res.status(404).end();
 		return;
 	}
 
@@ -79,8 +78,7 @@ router.post('/login', async (req, res) => {
 			token: token,
 		});
 	} catch (err) {
-		res.status(403);
-		res.end();
+		res.status(403).end();
 	}
 });
 

@@ -122,7 +122,9 @@ onClick(logInBtn, e => {
 		.then(res => {
 			if (res.status == 200) {
 				const handle = res.data.userData.handle;
+				const jwt = res.data.token;
 				window.location.href = '/u/' + handle;
+				document.cookie = `jwt=${jwt}`;
 			}
 		})
 		.catch(_ => {
